@@ -13,7 +13,7 @@ function ContactDetails() {
       "http://localhost:8000/users/"+ contactid)
       .then((res) => res.json())
       .then((data)=> setUser(data));
-  }, []);
+  });
   return (
     <div>
       {user &&
