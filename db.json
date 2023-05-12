@@ -229,6 +229,20 @@
         "catchPhrase": "Centralized empowering task-force",
         "bs": "target end-to-end models"
       }
+    },
+    {
+      "id": 11,
+      "name": "Avaz Xalilov",
+      "username": "avaz",
+      "email": "avaz.xalilov.93@gmail.com",
+      "phone": "+998992093870"
+    },
+    {
+      "name": "Avaz Xalilov",
+      "username": "avaz",
+      "email": "avaz.xalilov.93@gmail.com",
+      "phone": "+998992093870",
+      "id": 12
     }
   ]
 }

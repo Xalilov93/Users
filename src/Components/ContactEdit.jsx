@@ -28,7 +28,7 @@ function ContactEdit() {
         setEmail(data.email);
         setPhone(data.phone);
       });
-  });
+  }, []);
 
   const [id, setId] = useState("");
   const [name, setName] = useState("");
