@@ -1,0 +1,10 @@
+.all__contact {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    align-items: center;
+}

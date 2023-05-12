@@ -1,0 +1,14 @@
+header {
+    display: flex;
+    height: 80px;
+    justify-content: space-around;
+    align-items: center;
+}
+ul {
+    display: flex;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    padding: 10px 20px;
+}
