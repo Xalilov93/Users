@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import React, { /*useEffect,*/ useState } from 'react'
+// import { useParams } from 'react-router-dom';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -8,52 +8,72 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import DriveFileRenameOutlineSharpIcon from "@mui/icons-material/DriveFileRenameOutlineSharp";
 import Button from "@mui/material/Button";
 import Stack from '@mui/material/Stack';
-import FingerprintIcon from '@mui/icons-material/Fingerprint';
+// import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import { useNavigate } from "react-router-dom";
 
 function ContactEdit() {
-  const {contactid} = useParams();
+  // const {contactid} = useParams();
 
   
 
   
-  useEffect(() => {
-    fetch(
-      "http://localhost:8000/users/"+ contactid)
-      .then((res) => res.json())
-      .then((data)=> {
-        setId(data.id);
-        setName(data.name);
-        setUsername(data.username);
-        setEmail(data.email);
-        setPhone(data.phone);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(
+  //     "http://localhost:8000/users/"+ contactid)
+  //     .then((res) => res.json())
+  //     .then((data)=> {
+  //       setId(data.id);
+  //       setName(data.name);
+  //       setUsername(data.username);
+  //       setEmail(data.email);
+  //       setPhone(data.phone);
+  //     });
+  // }, []);
 
-  const [id, setId] = useState("");
+  // const [id, setId] = useState("");
+  // const [name, setName] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const navigate=useNavigate();
+
+  // const handleSubmit=(e)=>{
+  //   e.preventDefault();
+  //   const data={id,name,username,email,phone};
+
+  //   fetch(
+  //     `http://localhost:8000/users/` + contactid, {
+  //       method: "PUT",
+  //       body:JSON.stringify(data),
+  //       headers: {"content-type":"application/json"},
+  //       redirect: 'follow'
+  //     })
+  //     .then((res) => {
+  //       alert('Saved saccessfully.')
+  //       navigate('/all_contact')
+  //     })
+  // };
+  // const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const navigate=useNavigate();
 
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-    const data={id,name,username,email,phone};
+  const handleSubmit=()=>{
+    const post = localStorage.getItem('post') && localStorage.getItem('post').length > 0 ? JSON.parse(localStorage.getItem('post')) : [];
 
-    fetch(
-      `http://localhost:8000/users/` + contactid, {
-        method: "PUT",
-        body:JSON.stringify(data),
-        headers: {"content-type":"application/json"},
-        redirect: 'follow'
-      })
-      .then((res) => {
-        alert('Saved saccessfully.')
-        navigate('/all_contact')
-      })
+
+      const _post = post.map((e, eInIndex) => {
+        if(eInIndex.toString() === localStorage.getItem('editIndex').toString()) {
+          return {name,username,email,phone}
+        } else {
+          return e
+      }
+  })  
+    localStorage.setItem('post', JSON.stringify(_post))
+    navigate('/all_contact')
   };
-
   return (
     <>
     <h1 style={{textAlign: 'center'}}>Edit </h1>
@@ -66,10 +86,6 @@ function ContactEdit() {
         }}
       >
         
-        <Box  sx={{ display: "flex", alignItems: "flex-end" }}>
-          <FingerprintIcon  sx={{ color: "action.active", mr: 1, my: 2 }} />
-          <TextField  value={id} onChange={(e) => setId(e.target.value)} id="input-with-sx" label="ID" variant="standard"  />
-        </Box>
         <Box  sx={{ display: "flex", alignItems: "flex-end" }}>
           <DriveFileRenameOutlineSharpIcon sx={{ color: "action.active", mr: 1, my: 2 }}
           />

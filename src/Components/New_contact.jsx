@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { /*useEffect,*/ useState } from "react";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -24,9 +24,11 @@ function New_contact() {
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    const data={name,username,email,phone};
+    const post = localStorage.getItem('post') && localStorage.getItem('post').length > 0 ? JSON.parse(localStorage.getItem('post')) : [];
+    localStorage.setItem('post', JSON.stringify([...post, {name,username,email,phone}]))
+    navigate('/all_contact')
 
-    fetch(
+/*    fetch(
       `http://localhost:8000/users`, {
         method: "POST",
         body:JSON.stringify(data),
@@ -35,8 +37,7 @@ function New_contact() {
       })
       .then((res) => {
         alert('Saved saccessfully.')
-        navigate('/all_contact')
-      })
+      })*/
   };
   return (
     <>
